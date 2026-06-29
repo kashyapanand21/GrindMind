@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Clock, RefreshCw, TriangleAlert, ChevronRight } from "lucide-react";
 import TopBar from "../components/TopBar";
 import { DifficultyBadge, PriorityBadge } from "../components/Badges";
-import { revisionQueue } from "../data/mockData";
+import { revisionQueue } from "../data/realData";
 
 export default function RevisionQueue() {
   const [filter, setFilter] = useState("All");

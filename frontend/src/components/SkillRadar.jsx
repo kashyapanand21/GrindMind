@@ -5,7 +5,7 @@ import {
   PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
-import { radarData } from "../data/mockData";
+import { radarData } from "../data/realData";
 
 export default function SkillRadar() {
   return (

@@ -1,0 +1,13 @@
+{
+  "name": "update_revision_queue",
+  "permissions": {
+    "grants": [
+      { "resource": "tables/solved_problems", "actions": ["read"] },
+      { "resource": "tables/analyses", "actions": ["read"] },
+      { "resource": "tables/revision_queue", "actions": ["read", "write"] }
+    ]
+  },
+  "code": {
+    "$file": "code.py"
+  }
+}

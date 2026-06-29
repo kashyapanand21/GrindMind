@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Send, RefreshCw, Database } from "lucide-react";
 import TopBar from "../components/TopBar";
 import { UserBubble, AgentBubble } from "../components/ChatBubble";
-import { initialMessages, chatRecommendations } from "../data/mockData";
+import { initialMessages, chatRecommendations } from "../data/realData";
 
 export default function AIChat() {
   const [messages, setMessages] = useState(initialMessages);

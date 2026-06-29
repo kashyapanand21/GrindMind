@@ -2,7 +2,7 @@ import { TriangleAlert, BarChart3 } from "lucide-react";
 import TopBar from "../components/TopBar";
 import PatternCard from "../components/PatternCard";
 import ApproachChart from "../components/ApproachChart";
-import { patternCards, criticalWeakZones, patternAffinities } from "../data/mockData";
+import { patternCards, criticalWeakZones, patternAffinities } from "../data/realData";
 
 export default function SkillMap() {
   return (

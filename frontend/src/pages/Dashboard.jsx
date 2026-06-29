@@ -10,7 +10,7 @@ import {
   masteryBars,
   recentAnalysis,
   todaysRevision,
-} from "../data/mockData";
+} from "../data/realData";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("STREAKS");
