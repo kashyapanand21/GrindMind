@@ -53,6 +53,11 @@
       "name": "memory",
       "type": "TEXT",
       "required": false
+    },
+    {
+      "name": "solution_code",
+      "type": "TEXT",
+      "required": false
     }
   ]
 }

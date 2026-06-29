@@ -1,6 +1,18 @@
+#input_type_name: UpdateRevisionQueueInput
+#output_type_name: UpdateRevisionQueueResult
+#function_name: update_revision_queue
+
+from pydantic import BaseModel
+from lemma_sdk import FunctionContext
 import json
 import subprocess
 from datetime import datetime, timedelta
+
+class UpdateRevisionQueueInput(BaseModel):
+    pass
+
+class UpdateRevisionQueueResult(BaseModel):
+    ok: bool
 
 def run_lemma_cmd(cmd):
     result = subprocess.run(cmd, capture_output=True, text=True)
@@ -16,7 +28,7 @@ def get_records(table_name):
     res = run_lemma_cmd(["lemma", "record", "list", table_name])
     return res if isinstance(res, list) else []
 
-def main():
+async def update_revision_queue(ctx: FunctionContext, data: UpdateRevisionQueueInput) -> UpdateRevisionQueueResult:
     print("Starting update_revision_queue function...")
 
     # Fetch data
@@ -91,6 +103,4 @@ def main():
             subprocess.run(["lemma", "record", "create", "revision_queue", "--data", data_str])
 
     print("Revision queue update complete.")
-
-if __name__ == "__main__":
-    main()
+    return UpdateRevisionQueueResult(ok=True)

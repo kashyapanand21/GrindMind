@@ -2,9 +2,9 @@
   "name": "update_revision_queue",
   "permissions": {
     "grants": [
-      { "resource": "tables/solved_problems", "actions": ["read"] },
-      { "resource": "tables/analyses", "actions": ["read"] },
-      { "resource": "tables/revision_queue", "actions": ["read", "write"] }
+      { "resource_type": "datastore_table", "resource_name": "solved_problems", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
+      { "resource_type": "datastore_table", "resource_name": "analyses", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
+      { "resource_type": "datastore_table", "resource_name": "revision_queue", "permission_ids": ["datastore.table.read", "datastore.record.write"] }
     ]
   },
   "code": {
