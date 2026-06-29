@@ -1,0 +1,48 @@
+{
+  "name": "analyses",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "visibility": "POD",
+  "columns": [
+    {
+      "name": "problem_slug",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "username",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "pattern_used",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "time_complexity",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "space_complexity",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "approach_type",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "coaching_note",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "analysed_at",
+      "type": "DATETIME",
+      "required": false
+    }
+  ]
+}
