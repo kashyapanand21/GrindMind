@@ -1,0 +1,58 @@
+{
+  "name": "solved_problems",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "visibility": "POD",
+  "columns": [
+    {
+      "name": "username",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "problem_name",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "problem_slug",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "difficulty",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "topic_tags",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "date_solved",
+      "type": "DATETIME",
+      "required": false
+    },
+    {
+      "name": "submission_status",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "language",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "runtime",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "memory",
+      "type": "TEXT",
+      "required": false
+    }
+  ]
+}

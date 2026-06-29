@@ -1,0 +1,7 @@
+{
+  "name": "sunday_weekly",
+  "cron": "0 0 * * 0",
+  "target": {
+    "workflow": "weekly_report"
+  }
+}

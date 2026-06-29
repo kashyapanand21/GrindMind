@@ -1,0 +1,38 @@
+{
+  "name": "skill_scores",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "visibility": "POD",
+  "columns": [
+    {
+      "name": "username",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "topic",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "score",
+      "type": "INTEGER",
+      "required": false
+    },
+    {
+      "name": "total_solved",
+      "type": "INTEGER",
+      "required": false
+    },
+    {
+      "name": "optimal_count",
+      "type": "INTEGER",
+      "required": false
+    },
+    {
+      "name": "last_updated",
+      "type": "DATETIME",
+      "required": false
+    }
+  ]
+}
