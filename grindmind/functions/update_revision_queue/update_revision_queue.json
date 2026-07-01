@@ -1,0 +1,13 @@
+{
+  "name": "update_revision_queue",
+  "permissions": {
+    "grants": [
+      { "resource_type": "datastore_table", "resource_name": "solved_problems", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
+      { "resource_type": "datastore_table", "resource_name": "analyses", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
+      { "resource_type": "datastore_table", "resource_name": "revision_queue", "permission_ids": ["datastore.table.read", "datastore.record.write"] }
+    ]
+  },
+  "code": {
+    "$file": "code.py"
+  }
+}

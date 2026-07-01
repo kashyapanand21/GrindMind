@@ -1,0 +1,13 @@
+{
+  "name": "lemma-agent",
+  "description": "AI agent that analyzes LeetCode solutions, identifies patterns, and answers user queries about their skill progress.",
+  "instruction": { "$file": "instruction.md" },
+  "toolsets": ["POD"],
+  "visibility": "POD",
+  "permissions": { "grants": [
+    { "resource_type": "datastore_table", "resource_name": "solved_problems", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
+    { "resource_type": "datastore_table", "resource_name": "analyses", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
+    { "resource_type": "datastore_table", "resource_name": "skill_scores", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
+    { "resource_type": "function", "resource_name": "save_analysis", "permission_ids": ["function.execute"] }
+  ] }
+}

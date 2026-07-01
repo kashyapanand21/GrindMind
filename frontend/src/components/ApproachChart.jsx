@@ -7,7 +7,7 @@ import {
   Cell,
   Tooltip,
 } from "recharts";
-import { approachDistribution } from "../data/mockData";
+import { approachDistribution } from "../data/realData";
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload?.length) {

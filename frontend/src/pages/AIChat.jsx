@@ -2,44 +2,36 @@ import { useState, useRef, useEffect } from "react";
 import { Send, RefreshCw, Database } from "lucide-react";
 import TopBar from "../components/TopBar";
 import { UserBubble, AgentBubble } from "../components/ChatBubble";
-import { initialMessages, chatRecommendations } from "../data/mockData";
+import { chatRecommendations } from "../data/realData";
+import { useAssistantSession } from "lemma-sdk/react";
+import { lemmaClient } from "../lemma-client";
 
 export default function AIChat() {
-  const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState("");
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const bottomRef = useRef(null);
+
+  const session = useAssistantSession({
+    client: lemmaClient,
+    podId: lemmaClient.podId,
+    agentName: "lemma-agent",
+  });
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [session.messages, session.isStreaming]);
 
-  const sendMessage = () => {
+  const handleSendMessage = () => {
     const text = input.trim();
     if (!text) return;
-
-    const userMsg = { id: Date.now(), role: "user", content: text };
-    setMessages((prev) => [...prev, userMsg]);
+    
     setInput("");
-    setIsAnalyzing(true);
-
-    // Simulate agent response
-    setTimeout(() => {
-      const agentMsg = {
-        id: Date.now() + 1,
-        role: "agent",
-        content: `Analyzing your history for "${text}"...\n\nBased on your recent solves, I can see a pattern in your approach. Let me pull the relevant data from your submission history to give you a precise answer.`,
-        contextLinks: [],
-      };
-      setMessages((prev) => [...prev, agentMsg]);
-      setIsAnalyzing(false);
-    }, 1800);
+    session.sendMessage(text);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      sendMessage();
+      handleSendMessage();
     }
   };
 
@@ -102,20 +94,20 @@ export default function AIChat() {
 
           {/* Messages */}
           <div className="chat-messages">
-            {messages.map((msg) =>
+            {session.messages.map((msg) =>
               msg.role === "user" ? (
-                <UserBubble key={msg.id} content={msg.content} />
+                <UserBubble key={msg.id} content={msg.text} />
               ) : (
                 <AgentBubble
                   key={msg.id}
-                  content={msg.content}
-                  recommendedStructure={msg.recommendedStructure}
-                  contextLinks={msg.contextLinks}
+                  content={msg.text}
+                  recommendedStructure={msg.metadata?.recommendedStructure}
+                  contextLinks={msg.metadata?.contextLinks}
                 />
               )
             )}
 
-            {isAnalyzing && (
+            {session.isStreaming && (
               <div className="analyzing-indicator fade-in">
                 <RefreshCw size={13} />
                 Analyzing next optimal problem...
@@ -133,7 +125,7 @@ export default function AIChat() {
                 onKeyDown={handleKeyDown}
                 placeholder="Ask about your problem history or algorithms..."
               />
-              <button className="chat-send-btn" onClick={sendMessage}>
+              <button className="chat-send-btn" onClick={handleSendMessage}>
                 <Send size={13} />
               </button>
             </div>

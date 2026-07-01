@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CheckCircle, TriangleAlert, Info, ChevronDown, ChevronRight, Wrench, GitCompare } from "lucide-react";
 import TopBar from "../components/TopBar";
 import { DifficultyBadge } from "../components/Badges";
-import { problemHistory } from "../data/mockData";
+import { problemHistory } from "../data/realData";
 
 const noteIcon = {
   success: <CheckCircle size={13} color="var(--accent-green)" />,
