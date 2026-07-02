@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # GrindMind 🧠
 An AI-powered LeetCode growth dashboard that tracks your progress, analyzes your solutions, and gives personalized coaching.
 
@@ -60,3 +61,10 @@ cd frontend; npm install; npm run dev
 2. Open the app at `http://127-0-0-1.sslip.io:5173`
 3. Click the profile icon (top right) and enter your **LeetCode username**
 4. Your dashboard stats will populate automatically!
+=======
+# GrindMind — AI-Powered LeetCode Growth Agent
+
+> *Stop copy-pasting your solutions into ChatGPT. Let an agent that actually remembers you do the coaching.*
+
+<div align="center">
+>>>>>>> Stashed changes
