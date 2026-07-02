@@ -4,10 +4,11 @@
   "instruction": { "$file": "instruction.md" },
   "toolsets": ["POD"],
   "visibility": "POD",
+  "agent_runtime": { "profile_id": "019f2124-9320-7632-9e1f-32be79ac5a0f", "model_name": "llama-3.1-8b-instant" },
   "permissions": { "grants": [
     { "resource_type": "datastore_table", "resource_name": "solved_problems", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
     { "resource_type": "datastore_table", "resource_name": "analyses", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
     { "resource_type": "datastore_table", "resource_name": "skill_scores", "permission_ids": ["datastore.table.read", "datastore.record.read"] },
-    { "resource_type": "function", "resource_name": "save_analysis", "permission_ids": ["function.execute"] }
+    { "resource_type": "function", "resource_name": "save_analysis", "permission_ids": ["function.read", "function.execute"] }
   ] }
 }

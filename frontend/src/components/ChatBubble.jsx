@@ -12,6 +12,7 @@ export function UserBubble({ content }) {
 export function AgentBubble({ content, recommendedStructure, contextLinks }) {
   // Render inline code spans (backtick-wrapped)
   const renderContent = (text) => {
+    if (!text) return null;
     const parts = text.split(/`([^`]+)`/g);
     return parts.map((part, i) =>
       i % 2 === 1 ? <code key={i}>{part}</code> : part

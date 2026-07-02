@@ -20,12 +20,21 @@ export default function AIChat() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [session.messages, session.isStreaming]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     const text = input.trim();
     if (!text) return;
     
     setInput("");
-    session.sendMessage(text);
+    try {
+      let currentId = session.conversationId;
+      if (!currentId || session.conversation?.status === "FAILED") {
+        const newConv = await session.createConversation({ setActive: true });
+        currentId = newConv.id;
+      }
+      await session.sendMessage(text, { conversationId: currentId });
+    } catch (err) {
+      console.error("Failed to send message:", err);
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -35,7 +44,7 @@ export default function AIChat() {
     }
   };
 
-  const sessionId = "#AX-992";
+  const sessionId = session.conversationId ? session.conversationId.split('-')[0].toUpperCase() : "NEW";
 
   const difficultyColor = { MED: "var(--accent-amber)", HARD: "var(--accent-red)", EASY: "var(--accent-green)" };
 
@@ -111,6 +120,20 @@ export default function AIChat() {
               <div className="analyzing-indicator fade-in">
                 <RefreshCw size={13} />
                 Analyzing next optimal problem...
+              </div>
+            )}
+            {session.conversation?.status === "FAILED" && (
+              <div style={{
+                color: "var(--accent-red)",
+                fontSize: "11px",
+                padding: "10px 16px",
+                background: "var(--accent-red-dim)",
+                borderRadius: "6px",
+                border: "1px solid rgba(231,76,60,0.3)",
+                alignSelf: "center",
+                marginTop: 8
+              }}>
+                ⚠ The model provider returned an error or rate limit.
               </div>
             )}
             <div ref={bottomRef} />
